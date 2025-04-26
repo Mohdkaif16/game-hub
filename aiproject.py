@@ -4,11 +4,8 @@ import random
 import pygame
 import os
 import json
-
-# Initialize Pygame
 pygame.init()
 
-# ------------------- SCORE HANDLING -------------------
 if not os.path.exists("scores.json"):
     with open("scores.json", "w") as f:
         json.dump({"TicTacToe": 0, "Snake": 0, "Pong": 0, "MemoryMatch": 0}, f)
@@ -19,8 +16,6 @@ with open("scores.json", "r") as f:
 def save_scores():
     with open("scores.json", "w") as f:
         json.dump(scores, f)
-
-# ------------------- GUI SETUP -------------------
 root = tk.Tk()
 root.title("Game Hub")
 root.geometry("600x700")
@@ -39,7 +34,7 @@ set_theme()
 title = tk.Label(root, text="Game Hub", font=("Arial", 28, "bold"))
 title.pack(pady=20)
 
-# ------------------- TIC TAC TOE -------------------
+
 def play_tictactoe():
     window = tk.Toplevel()
     window.title("Tic Tac Toe")
@@ -99,7 +94,7 @@ def play_tictactoe():
     ai_button = tk.Button(window, text="Toggle AI", font=("Arial", 12), command=toggle_ai)
     ai_button.grid(row=3, column=0, columnspan=3)
 
-# ------------------- SNAKE -------------------
+
 def play_snake():
     window = tk.Toplevel()
     window.title("Snake")
@@ -150,7 +145,6 @@ def play_snake():
         pygame.draw.rect(screen, (255,0,0), pygame.Rect(food[0],food[1],20,20))
         pygame.display.update()
 
-# ------------------- PONG -------------------
 def play_pong():
     window = tk.Toplevel()
     window.title("Pong")
@@ -206,7 +200,6 @@ def play_pong():
         pygame.draw.aaline(screen, (255,255,255), (WIDTH//2, 0), (WIDTH//2, HEIGHT))
         pygame.display.update()
 
-# ------------------- MEMORY MATCH -------------------
 def play_memory():
     window = tk.Toplevel()
     window.title("Memory Match")
@@ -278,7 +271,6 @@ def play_memory():
     ai_button = tk.Button(window, text="Toggle AI", font=("Arial", 12), command=toggle_ai)
     ai_button.pack(pady=10)
 
-# ------------------- MAIN MENU -------------------
 btn1 = tk.Button(root, text="Play Tic Tac Toe", font=("Arial", 16), command=play_tictactoe, width=25)
 btn1.pack(pady=10)
 
